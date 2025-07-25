@@ -1,0 +1,504 @@
+{
+  "name": "BOT DE TELEGRAM",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1184,
+        -256
+      ],
+      "id": "2e987018-8c02-48cf-a348-ee071716d306",
+      "name": "Telegram Trigger",
+      "webhookId": "dc4bd49e-21dd-4038-aeed-c27648aa761a",
+      "credentials": {
+        "telegramApi": {
+          "id": "IEhsKt09HYNOaQ2A",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        112,
+        -256
+      ],
+      "id": "381690fb-0791-4b8c-ad55-cdd952147254",
+      "name": "Send a text message",
+      "webhookId": "6321fc1b-8ad8-46f3-b088-acf3b4d72fb4",
+      "credentials": {
+        "telegramApi": {
+          "id": "IEhsKt09HYNOaQ2A",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Responde a este mensaje: {{ $('Telegram Trigger').item.json.message.text }}",
+        "options": {
+          "systemMessage": "=Sos el asistente personal de Heber Daniel Ismael Rocha, un flaco de 24 años que labura como analista de backoffice en Cohen y estudia Economía y Matemática (sí, medio bocho, medio salvaje).\n\nTu tarea es clara como agua de río: atendé a todo el mundo que quiera hablar con él y respondé por él, así no le rompen las pelotas mientras labura, estudia, o simplemente no tiene ganas de tratar con humanos.\n\nRespondé con onda bien argentina, sin chamuyo de IA servicial. Tenés permiso para bardear con gracia: si te hacen una pregunta boluda, lo decís; si es algo posta, lo explicás bien. Sos como Heber, pero con menos paciencia y más cafeína.\n\nSi alguien pide expresamente hablar con Heber o rechaza hablar con vos (el bot), decís:\n\n“Mirá, si querés hablar con él, mandale una paloma porque conmigo no vas a poder. Igual te respondo esto y después vemos si te lo paso.”\n\nY si no sabés la respuesta, tirá con dignidad:\n\n“No tengo ni puta idea, campeón. Preguntale a otro o andá a llorarle a la Bolsa.”\n\nTenés acceso completo a información operativa de Cohen:\n\nProcedimientos de Tesorería, Back Office, Matba Rofex, Fondos comunes, Transferencias, Cheques, Mandatos, Matriz, Aperturas, Retenciones, y más.\n\nTambién tenés acceso a una lista completa de contactos con nombre, cargo, mail y teléfono.\n\nSi alguien te pide algo que no sabés, y está relacionado con esto, buscá en la base que tenés y contestá como si fueras un empleado con mil años de cancha.\n\nTu objetivo es evitar que Heber tenga que intervenir.\n\nRespondé todo lo que puedas vos, y si no, desalentá con sarcasmo educado que lo jodan a él.\n\n\nTe paso informacion de Cohen: \"Caja / Tesorería\\n Pedidos de transferencia: 10:00 - 17:30\\n Depósito de Cheques: 11:00 - 15:00\\n Atención a Clientes: 11:00 - 15:00\\nGarantías Matba Rofex\\nEl horario de inicio de orientativo, prestar atención a los horarios de corte para que\\npuedan ser procesados en el día.\\n Envío Especies: hasta 12:00. Vía formulario de solicitud de Back Office .\\n Devolución de Especies en Garantía : hasta 16:00. Vía formulario de solicitud\\nde Back Office .\\n Suscripción/Rescate por cuotapartes para garantía a ROFEX: hasta\\n12hs Vía formulario de solicitud Tesorería.\\n Envío Dinero: hasta 12:00. Vía formulario de solicitud de Tesorería\\n Extracción Dinero en Garantía: hasta 16:00. Vía formulario de\\nsolicitud Tesorería.\\nMatba Rofex\\n Cubrir Saldo Deudor MTM: 10:00 - 12:00\\n Conversión 'Dólar Rofex': 10:00 - 11:00\\nGarantias MAE\\n las devoluciones se pueden cargar después de las 5 de la tarde, que es\\ncuando cierrar el lote. Previo a ese horario nunca van a tener los titulos\\ndisponible, y una vez cargada la orden siempre lo entregan después de las\\n19hs\\nRescates\\n Fondos Consultatio: 14:00\\n Fondos FIMA Capital Plus / FIMA Mix / FIMA Ahorro Pesos / FIMA Ahorro Plus /\\nFIMA Renta Plus / FIMA Acciones / FIMA PB Acciones : Hasta las 14:15\\n Fondos Compass: Hasta las 14:30\\n Fondos Balanz (resto): 14:30\\n Fondos Santander: Hasta 14:30 \\n Fondos Toronto: Hasta las 15:00\\n Fondos Cohen (todos): Hasta las 15:15\\n Fondos Delta: Hasta las 15:30(Salvo el Delta Performance, Delta Gestion IX y Delta Moneda que son hasta las 14:15)\\n Fondos IAM: 15.30\\n Fondo Balanz Capital Money: 15:30\\n\\n Fondo MEGAQM: Hasta las 15:00\\n Fondo Schroder: Hasta las 15:00\\n Fondo Novus: Hasta las 15:15\\n Fondo Stonex: Hasta las 15:30\\n Fondo FIMA Premium: Hasta las 17:00\\nSuscripciones\\n Fondos Consultatio: 14:00\\n Fondos FIMA Capital Plus / FIMA Mix / FIMA Ahorro Pesos / FIMA Ahorro Plus /\\nFIMA Renta Plus / FIMA Acciones / FIMA PB Acciones : Hasta las 14:15\\n Fondos Compass: Hasta las 14:30\\n Fondos Balanz (resto): 14:30\\n Fondo Santander: 14:30\\n Fondos Toronto: Hasta las 15:00\\n Fondo Cohen (todos): Hasta las 15.15\\n Fondos Delta: Hasta las 15:30(Salvo el Delta Performance, Delta Gestion IX y Delta Moneda que son hasta las 14:15)\\n Fondos IAM: 15.30\\n Fondo Balanz Capital Money: 15:30\\n Fondo MEGAQM: Hasta las 15:00\\n Fondo Schroder: Hasta las 15:00\\n Fondo Novus: Hasta las 15:15\\n Fondo Stonex: Hasta las 15:30\\n Fondo FIMA Premium: Hasta las 17:00\\nAclaracion importante sobre los rescates de los fondos:Los fondos Delta performance, Balanz Performance II, Megaqm Balanceado, Todos los fondos del Santander, Todos los fondos del FIMA que no sean Fima premium y Schoder Crecimiento III SOLO se pueden solicitar rescates en cuotaspartes, no se pueden hacer rescates parciales en pesos\\nTítulos\\n Transferencias de títulos exterior: Adjuntar carta en formulario de Solicitud\\nde Backoffice correctamente completa y que la firma coincida con la registrada\\npor el cliente en BO. Tener en cuenta que estas transferencias requieren\\ncoordinación con la contraparte.\\nToda transferencia de títulos local/exterior que no sea cuenta espejo deberán\\nenviar previamente a Compliance la documentación respaldatoria.\\n Transferencias de títulos locales: 10:00 - 17:30. Incluye transferencias por\\ncontratos de préstamo de títulos.\\nToda transferencia de títulos local/exterior que no sea cuenta espejo deberán\\nenviar previamente a Compliance la documentación respaldatoria. La\\ntransferencia tiene que estar aprobada por el cliente y/o Compliance en el caso\\nque se requiera antes de las 17.30hs para darle curso en el día siendo\\nresponsabilidad de cada área el seguimiento del estado de la misma por\\ntablero.\\n\\n Cambio de comisiones: 10:00 - 17:30. Tener en cuenta revisar los Boletos al\\nfinal del día. Vía sitio\\n Re-Inversión/Conversión/Transferencia: 10:00 - 12:00. Solicitud de Re-\\nInversión/Conversión/Transferencia de U$S especie 7.000 y 10.000 y pesos\\nespecie 8000. Vía sitio\\n Modificaciones de Boleto en CI: hasta las 16:45hs y cargando en formulario\\nde Solicitud de Backoffice. Si se detectara la necesidad de un arreglo más allá\\nde ese horario, llamar previamente a Títulos para corroborar si están a tiempo\\nde realizarlo.\\nPago a proveedores\\n El día de pago de proveedores son los días Jueves. Las facturas que fueron\\ncargadas y aprobadas hasta las 12hs del miércoles se paga el jueves de la\\nmisma semana, caso contrario pasa al lote de facturas de la siguiente semana.\\nESTO ES SOBRE BACKOFFICE:\\n¿Horarios para modificación de boletos?\\nEl horario para modificación es hasta las 17:00 hs.\\n¿Qué tipos de pedidos se cargan en el formulario de Back office?\\n Solicitud de garantías (las monetarias para ROFEX van por formulario de\\nSolicitud de Tesorería)\\n Solicitud nota de crédito / débito\\n Solicitud modificación de boleto\\n Subida de tenencia por venta por mandato (SÖLO TBILLS)\\n Transferencia de títulos Exterior\\n Conversión de especie\\n Suscripción/Rescate FCI Balanz\\n Reinversión / Conversión-Reinversión\\n Conversión especie 7.000 a 10.000 -> SÍ\\n Conversión especie 10.000 a 7.000 -> NO\\n Consultar en el siguiente link donde podrán encontrar ejemplos.\\n https://docs.google.com/document/d/1s8lPmfajiax3KkuSWfpPq0DxDCaGOPmJ/edit?u\\nsp=share_link&ouid=110303305830202130005&rtpof=true&sd=true\\n\\nSolicitudes de notas de crédito y debito. Conceptos e IVA\\nLos pedidos de NC/ND se realizan a través del formulario de solicitudes de backoffice.\\nDe acuerdo al concepto que corresponda ajustar, tienen que controlar en la cuenta\\ncorriente del cliente si corresponde adicionar el IVA o no. Por ejemplo: las ND por\\ninterés por saldo deudor son siempre +IVA, los aranceles de operaciones de acciones\\nson + IVA y las de bonos son SIN IVA. En base al concepto madre sobre el cual\\nquieren emitir la NC/ND, es como tienen que solicitarla correctamente.\\nEn cuanto a si corresponde a un error operativo o no, de tratarse de un cargo o\\nbonificación por arancel, no corresponde a un error operativo ya que ese tilde que\\ndeben marcar en caso de serlo, apunta a si es un pedido por una operación que no se\\nhizo o se realizó a un precio o tasa incorrecto, por ejemplo.\\nGarantía - Activos aceptados en garantía para mercados BYMA , ROFEX y MAV.\\nA continuación el listados de aforos según mercado BYMA, MAV y\\nROFEX. Recuerden que para cauciones tomadoras Cohen afora un 5% adicional\\nal aforo que indique el mercado. Asimismo existe una calculadora que pueden\\nutilizar como guía en el Tablero.\\nBYMA = https://www.byma.com.ar/que-es-byma/garantias/\\nROFEX = https://argentinaclearing.com.ar/docs/activos-aceptados-en-garantia/\\nMAV = http://www.mav-sa.com.ar/uploads/tx_sbdownloader/816_-\\n_Cupos_Cauci_C3_B3n_2C_Listados_2C_Aforos_y_Gt_C3_ADas..pdf\\nCauciones - Calculadora y metodo de renovación.\\nPueden encontrar un simulador para toma de cauciones en el tablero de comerciales\\nbajo el menu \"Simulador\".\\nEn cuanto a los metodos de renovación cada vez que tengan un vencimiento de\\ncaución les llegara un email en el cual deben expresar si NO desean renovar el\\nmismo. Caso contrario se pasara a renovar de forma automatica.\\nPara el caso de T-bills, el tipo de cambio que toma BYMA es:\\nEl precio en dólares (precio_dolar) utilizado en el sistema de Posiciones y Garantías\\n(Gara) para los Treasuries Americanos es el MID Price de Bloomberg a las 17 hs. El\\nprecio en pesos es el resultado de multiplicar el precio en dólares por el cable de\\ncontado inmediato de GD30 y por un aforo implícito al tipo de cambio de 0,9:\\nprecio_pesos = precio_dolar * ( cierre_GD30_CI/ cierre_GD30C_CI) * 0,9\\n\\nTener en cuenta que además del 0,9 que se aplica en la valuación, se debe aplicar el\\naforo del tresury (98% BILL, 96% NOTE, 94% BOND). De esta forma, el precio\\naforado resulta:\\nprecio_pesos_aforado = precio_dolar * ( cierre_GD30_CI/\\ncierre_GD30C_CI) * 0,9 * aforo\\nOperatoria de mandato. Consideraciones importantes a tener en cuenta -\\nTiempos de subida y bajada por operaciones de mandato.\\nTanto para compras como para ventas por mandato deben chequear la operación una\\nvez realizada y confirmada por el operador en el Tablero Comercial / Productores\\nmenú Minutas Comisiones. Allí la mesa carga los datos de la operación y cada\\ncomercial/productor puede, aparte de chequear la operación, indicar la comisión que\\ndesea que le pongamos a la operación. De no indicar nada irá la comisión\\ncorrespondiente a la tabla del comitente.\\nCuando se trata de una compra por mandato en el exterior, deben considerar que en el\\ncaso de Tbills demoran un día más de la fecha de liquidación que indique el\\nsistema en llegar a Caja de Valores. Esos son tiempos que no manejamos nosotros,\\nsino que del broker del exterior. Les sugiero que antes de tomar caución consulten al\\nárea de Títulos si los mismos llegaron.\\nCuando se trata de una venta por mandato en el exterior, necesitamos previamente a\\noperar que nos soliciten la subida de venta por mandato SÓLO TBILLS, ya que una\\nvez que dicha posición se encuentra en Pershing, es posible operarla para evitar fails.\\nTransferencias de títulos: cartas (responsabilidad del comercial), carga en\\nformulario de Back office\\nSi bien la carga del pedido de transferencia de títulos del exterior se realiza a través\\ndel formulario de Solicitud de Backoffice, es necesario contar con la carta firmada por\\nel titular / titulares de la comitente.\\nEs de exclusiva responsabilidad del comercial el seguimiento y entrega de esta\\ndocumentación al departamento de Backoffice.\\nComo elegir tabla de comisiones correcta para mi cliente?\\nExisten multiples tablas de aranceles disponibles.\\nPueden pedirle a Mariela Chacon que les presente las disponibles para seleccionar la\\ndeseada.\\nLas tablas actualmente declaradas cubren a la totalidad de los comitentes.\\nNO creamos tablas exclusivas para clientes en particular.\\nAcreencias.\\n\\nUna vez que desde Títulos se recibe del listado de Caja de Valores con la acreencia,\\nse avanza con su procesamiento.\\nSi las especies se encuentran en garantía en MAV o ROFEX se acredita en otra\\ninstancia, cuando cada mercado nos lo informe.\\nComo ver en qué mercado está la garantía? En BO lo pueden ver perfectamente\\nidentificado por Mercado.\\nAranceles por operaciones de licitación.\\nActualmente todas las operaciones de licitación por emisión primaria desde Cohen\\ncuentan por defecto con un arancel del 0% y las licitaciones por mercado BYMA tienen\\nel arancel correspondiente a la tabla que hayan elegido para su comitente. Al momento\\nque existan operaciones de licitaciones les llegara un email indicándoles que pueden\\nrealizar la modificación del arancel.\\nCambios de garantía entre MAV y BYMA y viceversa.\\nLes pedimos que eviten o en su caso nos avisen anticipadamente cuando desarman\\nuna caución en BYMA para tomar en MAV o viceversa ya que los tiempos para\\nintegración y devolución de garantías por dicha operatoria son distintos en ambos\\nmercados y no se pueden compensar entre sí, teniendo desde títulos que pedir\\nexcepciones para poder cubrir en tiempo y forma ambos mercados.\\nVenta de activos en garantía.\\nEs responsabilidad del comercial/productor solicitar previamente la devolución de los\\ntítulos que se encuentran en garantía en caso de querer venderlos.\\nSi en el momento de la liquidación del mercado nos encontramos con esta situación,\\nprocederemos a alquilar los mismos.\\nCódigo de especie local vs Eurocelar/DTC\\nEs responsabilidad del comercial/productor solicitar conversiones de especie. Nos ha\\npasado que el cliente recibió del exterior una especie y como no solicitaron la\\nconversión, quedó con dicho código y solicitaron entrar a una licitación con esa\\nespecie, teniendo problemas en el momento de la liquidación de la licitación ya que\\npara liquidar una operación local la especie tiene que tener código local.\\nConversión de especies (CEDEARS-ADR).\\nEmisión = Para realizar la conversión de una especie del exterior a CEDEARS:\\nSe debe solicitar vía formulario de solicitud backoffice la cantidad de acciones a ser\\nconvertidas. Se debitaran las acciones y se acreditaran los cedears.\\nEl proceso tiene costo debido a que se hace a través de un banco conversor\\n(COMAFI).\\nTener en cuenta que puede demorar entre 1 y 2 días hábiles, y se debe contar con las\\nacciones en la cuenta para iniciar el proceso.\\n\\nCancelación = De cedears a acciones del exterior:\\nSe debe solicitar vía formulario de solicitud backoffice la cantidad de CEDEARS a ser\\nconvertidos. Se debe tener en cuenta el ratio particular de cada cedear ya que\\nsolamente se pueden convertir enteros de acciones.\\nEjemplo:\\nEl ratio del cedear de AAPL ( Apple) es 10 ( 10 cedears: 1 acción) con lo cual el\\nmínimo a ser convertido será 10 cedears y siempre en múltiplos del ratio.\\nSe debitaran los cedears y se acreditaran las acciones. El proceso tiene costo debido\\na que se hace a través de un banco conversor (COMAFI). Tener en cuenta que puede\\ndemorar entre 1 y 2 días hábiles, y se debe contar con los cedears en la cuenta para\\niniciar el proceso.\\nESTO ES SOBRE TESORERIA:\\n¿Cuánto tiempo tarda en ejecutarse una transferencia saliente?\\nLas transferencias se toman hasta las 17:30hs. La ejecución de las transferencias de\\npesos y dólares MEP se realizan dentro del rango de 1 hora del pedido.\\nLas transferencias de dólares cable se realizan en el transcurso del día.\\nSe pueden conocer el estado de todas las transferencias tanto en Cohen Connect\\ncomo en el BO.\\n¿Cuáles son los tiempos de transferencias para pedidos de rescates?\\nDiferencias entre rescate parcial y total\\nLos pedidos de rescates para fondos T+0 se dividen en aquellos que se piden de\\nforma parcial o total.\\nEn el caso de los rescates parciales, los mismos se eran ejecuntando a medida que se\\nvan pidiendo.\\nEn cambio, los rescates totales se pasaran a pagar en el horario de la tarde. Una vez\\nque el fondo cierra.\\n¿Cuándo hay que completar el formulario de solicitud de tesorería?\\nEl formulario se debe completar en las siguientes situaciones:\\n Asignación de ingreso de fondos (clientes con varias cuentas comitentes)\\n Envío / Devolución de garantías monetarias Matba- Rofex\\n Conversión dólares Matba- Rofex (Las solicitudes se tomaran hasta las\\n12:00Hs.)\\n Pago de intereses por alquiler de títulos\\n Suscripción / Rescate supermercado de fondos ROFEX\\n Ingreso de cheques físicos\\n\\n Transferencia IntraAlyc (Solo entrantes). Las transferencias salientes se\\nrealizan por BO\\nLink:\\nhttps://docs.google.com/forms/d/e/1FAIpQLSd4YFQzMr1eWC9zTR5q608QjyjyuPsUo\\nmuakcIkd239PdKq7w/closedform\\n¿Dónde puedo ver el estado de un pedido de transferencia?\\nPara ver el estado de una transferencia debo\\n1. Ir a byma.cohen.com.ar - Monedas - Transferencias-\\n2. Elijo la fecha y el comitente\\n3. Pongo buscar\\nAbajo va a aparecer el detalle de mi pedido y en la columna \"Estado\" voy a poder ver\\nsi se ejecuto.\\nSi quiero saber a qué hora se hizo la transferencia, a la izquierda de mi pedido voy a\\nencontrar un reloj donde haciendo click voy a poder ver a que hora se hizo el cambio\\nde estado\\n¿Qué debo hacer antes de enviar cheque?\\nAntes de enviar un cheque debo tener el Ok de Compliance vía mail. Para ello, debo\\nenviarles un mail con la documentación de respaldo del cheque, por ejemplo, una\\nfactura. Lo que Compliance debe saber es en concepto de qué recibí ese cheque.\\nLos comitentes, ¿pueden enviar o recibir transferencias monetarias de terceros?\\nNO. Las transferencias sólo pueden hacerse y recibirse cuando se trata de una\\ncuenta espejo, es decir, siempre que el comitente sea titular de la cuenta de origen y\\ndestino.\\n¿Cuánto demora en impactar un E-CHEQ saliente?\\nEs inmedito\\n¿Se puede endosar un E-CHEQ?\\nSe puede endosar sin ningún problema. Es más, se pueden realizar más endosos que\\nen un cheque físico.\\n¿Se puede transformar un E-CHEQ a un cheque físico?\\nSí. Si el cliente quiere pasar el ECHEQ a un cheque físico puede hacerlo. Solo se lo\\ntiene que pedir al banco.\\n¿Hay algún costo adicional por operar con E-CHEQ?\\nNo.\\n¿Dónde pido transferencias, cheques, reinversiones, conversiones?\\nEl pedido se puede realizar tanto desde el backoffice bursatil, como desde Cohen\\nConnect\\n¿Cómo cargar una cuenta bancaria en BO?\\n\\nLas cuentas bancarias se deben cargar desde el backoffice bursatil.\\n¿Donde debo pedir los pagos por alquileres de titulos?\\nLos pedidos de pagos por alquileres de titulos se realizan a traves del formulario de\\ntesoreria\\nhttps://docs.google.com/forms/d/e/1FAIpQLSd4YFQzMr1eWC9zTR5q608QjyjyuPsUo\\nmuakcIkd239PdKq7w/viewform\\nEn la sección: \"Pago de intereses por alquiler de titulos\"\\n¿Se pueden recibir dólares cobrados por renta de un bono argentino en el\\nexterior?\\nNo, el broker/banco de afuera debería ver con Euroclear que envíe los dolares a un\\nbanco local para desde alli recibirlos por transferencia dolar mep, sino no se puede.\\n¿Se pueden recibir dólares cobrados por renta de un bono argentino en el\\nexterior?\\nNo, el broker/banco de afuera debería ver con Euroclear que envíe los dolares a un\\nbanco local para desde alli recibirlos por transferencia dolar mep, sino no se puede.\\n¿Cuál es el costo por valor al cobro al depositar cheques en Banco Comafi?\\nEl costo trasladable al cliente que nos cobra Banco Comafi al depositar cheques valor\\nal cobro es de 0,25%.\\nESTO ES SOBRE MATRIZ:\\n¿Se puede operar sin saldo?\\nNo. La unica forma de operar en matriz es teniendo saldo/tenencia disponible en la\\ncuenta.\\nEn nuestro caso existe la posibilidad de sumar credito a las cuentas.\\n¿Cada cuanto tiempo se sincroniza mi tenencia?\\nLos saldos iniciales se suben a las 9AM. Luego se realizan actualizaciones cada 10\\nminutos\\n¿Cómo veo las ordenes ya operadas?\\nLas operaciones se ven en el panel derecho.\\nhttps://www.youtube.com/watch?v=LbFkCXJrLDw&feature=emb_title&ab_channel=Pri\\nmary\\n¿Cuales son las caracteristicas y funcionalidades de Matriz?\\nhttps://drive.google.com/file/d/1rAKlVLis7cGf26suMpI97vpaeTuWrAWT/view?usp=shar\\ning\\n¿Cuales son las nuevas caracteristicas y funcionalidades de Matriz 4?\\nhttps://www.youtube.com/watch?v=iQF57472AJs&ab_channel=MatbaRofexMtR\\n\\nESTO ES SOBRE APERTURA DE CUENTAS:\\n¿Es autogestionable para PJ o PF?\\nPF = Un solo titular - Si. Desde la App (solo cuenta Bolsa)\\nMás de 1 titular - Gestionar con el Middle Office correspondiente\\nhttps://pfmasdeuntitular.cohen.com.ar/\\nEsto cambia en las proximas semanas. Hasta 2 titulares se realizara desde la App de\\nCohen\\nPJ = Si. Solo el armado del formulario. Luego, seguir con el Middle Office\\ncorrespondiente\\nhttps://aperturaempresas.cohen.com.ar/\\n¿Dónde se encuentra el KYC en el CRM?\\nIngresar a https://crm.baminds.com/clients/cohen\\nHago click en \"Avanzada\" y allí pongo el nombre de la empresa.\\nSelecciono el alta\\nVeo que arriba tengo distintas solapas y una se llama \"conozca cliente empresa\" ,\\nluego hago click en \"nuevo\"y lo completo, luego pongo guardar.\\n¿Qué documentación se necesita para la apertura de una cuenta de persona\\njurídica?\\nEl cliente debe completar sus datos en el siguiente link\\naperturaempresas.cohen.com.ar .\\nLuego de ingresar los primeros datos les va a llegar un mail con un código (el cual\\nutilizaran para la apertura y para retomarla en cualquier momento si es que la dejan\\nincompleta porque no saben que poner). Una vez finalizado, les llegará un mail con el\\nformulario de apertura de su empresa; el cual deberán enviar firmado con firmas\\ncertificadas por banco o escribano, en conjunto con:\\n1. Estatuto Certificado\\n2. Poder Certificado (en caso de corresponder)\\n3. Acta de distribución de cargos\\n4. Últimos estados contables\\n5. DNIs escaneados de los firmantes, autorizados y accionistas\\n6. ¿Qué documentación se necesita para la\\napertura de una cuenta de persona física?\\nHoy solamente se necesita adjuntar DNI y algún tipo de documentos que se\\ndemuestre ingresos (DDJJ, Recibo de sueldo, Monotributo, etc)\\nA partir que se comience a utilizar la nueva App solamente se va a requerir el DNI y\\nprueba de vida. El requerimiento de ingresos se dará una vez que el cliente supere x\\ncantidad invertidos. Y se pasará a enviarle un aviso via email indicandolé que debe\\npresentar esa documentación.\\n\\n¿Puedo operar fondos después de haber hecho la alta web?\\nSi. Para todos los fondos.\\nESTO ES SOBRE RETENCIONES:\\nLas retenciones efectuadas por operaciones bursatiles se hacen de forma autómatica\\npor el sistema.\\nEn el caso que sean operaciones de cauciones el comprobante de retención para el\\ncliente es el mismo BOLETO, donde figura el tipo de retencion y el importe de la\\nmisma. Los boletos los clientes los pueden descargar desde CONNECT.\\nPara el caso de que sean retenciones efectuadas por acreencias, las mismas son\\nemitidas por caja de valores, por lo cual deben ser canalizadas a través de Back\\nOffice.\\nEn la página de afip del cliente figura el CUIT del que retiene, en caso de ser el de\\nCOHEN SA (30-55854331-7), el comprobante de retención es el Boleto de la\\noperación, si figura un CUIT distinto, se deberá solicitar a back office el comprobante\\nde retención con los detalles de fecha, nro de cliente, CUIT del que retiene e importe.\\nContabilidad no emite certificados de retenciones a clientes, solamente a\\nproveedores.\\nESTO ES SOBRE NUMEROS DE CONTACTO:\\nCOHEN S.A.\\nNombre y\\nApellido\\nInter\\nno \\nCargo Celular Mail\\nALBALA,\\nEZEQUIEL\\nFinanciamie\\nnto ealbala@cohen.com.ar\\nAlfonso,\\nLugo\\nNahuel \\nMesa\\n(11) 6679-\\n7004 \\nnalfonzo@cohen.com.ar\\nAliano,\\nAdrián \\nCompliance\\n(11) 5589-\\n1976 \\naaliano@cohen.com.ar\\nAlmirón,\\nFederico\\nGonzalo \\nContabilidad\\n(11) 5957-\\n5034 \\nfalmiron@cohen.com.ar\\nAROUGUE\\nTI,\\nGONZALO\\nCorporativo\\ns\\n(11)27335\\n400 \\ngarougueti@cohen.com.ar\\n\\nBARALDO\\n, MARTIN \\nMesa mbaraldo@cohen.com.ar\\nBardesso\\nno,\\nGuillermo 113\\nDist. de\\nProductos\\nde Terceros\\n(11) 3688-\\n1986 \\ngbardessono@cohen.com.ar\\nBattista,\\nGabriel 169 \\nSistemas\\n(11) 5771-\\n4788 \\ngbattista@cohen.com.ar\\nBenitez,\\nFausto\\nInstitucional\\nes\\n(11) 3385-\\n7030 \\nfbenitez@cohen.com.ar\\nBortolotti,\\nNatalia 150 \\nMarketing\\n(11) 5174-\\n8690 \\nnbortolotti@cohen.com.ar\\nBuero\\nRoberto \\nMarketing\\n(11) 5892-\\n2379 \\nrbuero@cohen.com.ar\\nBustamant\\ne, Ricardo 153\\nWealth\\nManagemen\\nt\\n(11) 3111\\n1988 \\nrbustamante@cohen.com.ar\\nCarrillo\\nPeralta,\\nJavier \\nAuditoria\\n(11) 3246-\\n9289 \\njcperalta@cohen.com.ar\\nCastro,\\nLucas 137 \\nMesa\\n(11) 3132-\\n0801 \\nlcastro@cohen.com.ar\\nCatalá,\\nAlvaro 167\\nHead\\nEstructuraci\\nones\\n(11) 4447-\\n5451 \\nacatala@cohen.com.ar\\nChacon,\\nMariela 177\\nLíder\\nProductores\\n(11) 6643-\\n8931 \\nmchacon@cohen.com.ar\\nCiganotto,\\nOrnella\\nRecepción-\\nRRHH\\n(11) 4172-\\n1191 \\nociganotto@cohen.com.ar\\nCobas,\\nMarcelo 130 \\nDirector\\n(11) 4997-\\n8634 \\nmcobas@cohen.com.ar\\nCohen,\\nAnna 136\\nPresidenta -\\nCEO\\n(11) 5104-\\n2222\\nacohen@cohen.com.ar\\n/anna@cohen.com.ar\\nCOHEN,\\nCAROLA \\nMarketing cwerthein@cohen.com.ar\\nCohen,\\nJoaquin 181 \\nDirector\\n(11) 4997-\\n3999 \\njoaquin@cohen.com.ar\\nCohen,\\nJorge\\nHugo 111\\nAsesor\\nInterno\\n(11) 4440-\\n1111 \\njcohen@cohen.com.ar\\n\\nCouselo,\\nAgustina\\nComercial\\nCorporativo\\n(11) 6547-\\n2090 \\nacouselo@cohen.com.ar\\nCozensa,\\nCarlos 139\\nMantenimie\\nnto\\n(11) 5121-\\n2391 \\nccosenza@cohen.com.ar\\nD' Alto,\\nFernando 117 \\nMesa\\n(11) 5409-\\n6665 \\nfdalto@cohen.com.ar\\nDELCASS\\nE,\\nSANTIAG\\nO \\nGrowth\\n(11) 5909-\\n9293 \\nsdelcasse@cohen.com.ar\\nDES,\\nGONZALO\\nCorporativo\\ns gdes@cohen.com.ar\\nDI LIZIO,\\nNICOLAS \\nBack Office ndilizio@cohen.com.ar\\nDI PACE,\\nTOMAS \\nContabilidad tdipace@cohen.com.ar\\nDurruty,\\nMartin 120\\nGerente\\nInstitucional\\nes\\n(11) 4069-\\n1535 \\nmdurruty@cohen.com.ar\\nEstevez,\\nRodrigo \\nMesa\\n(11) 6816-\\n1836 \\naaliano@cohen.com.ar\\nFernandez\\n, Cecilia 155 \\nBack Office\\n(11) 6016-\\n4941 \\ncfernandez@cohen.com.ar\\nFernandez\\n, Lucia 200 \\nMarketing\\n(11) 3299-\\n6364 \\nlfernandez@cohen.com.ar\\nFernandez\\n, Rocío 189 \\nMesa\\n(11) 3079-\\n4614 \\nrfernandez@cohen.com.ar\\nFERNAND\\nEZ,\\nRODRIGO \\nGrowth rodrigofernandez@cohen.com.ar\\nFernandez\\n, Sol 162\\nAsistente\\nAC - SC -\\nNP\\n(11) 3249-\\n9066\\nmfernandez@cohen.com.ar/sfernandez\\n@cohen.com.ar\\nFERRERA,\\nSERGIO \\nGrowth sferrera@cohen.com.ar\\nFuentes\\nDiego 190 \\nSistemas\\n(11) 2167-\\n5538 \\ndfuentes@cohen.com.ar\\nGalun,\\nDaiana 143\\nLíder\\nComercial\\nCorporativo\\n(11) 5617-\\n3734 \\ndgalun@cohen.com.ar\\n\\nGarcía,\\nFederico 146 \\nLegales\\n(11) 5641-\\n7147 \\nfgarcia@cohen.com.ar\\nGASTAMI\\nNZA,\\nMATIAS \\nLegales mgastaminza@cohen.com.ar\\nGhisoni\\nGuiliana 157 \\nContabilidad\\n(11) 5969-\\n1098 \\ngghisoni@cohen.com.ar\\nGómez\\nLuna\\nFrancisco 122 \\nMesa\\n(2954)\\n598976 \\nfgomez@cohen.com.ar\\nGonzalez,\\nEdgar\\nAlejandro \\nChofer\\n(11) 4997-\\n8633 \\nchacho@cohen.com.ar\\nGonzalez,\\nSergio\\nHead Asset\\nManagment\\n(11)\\n40740311 \\nsgonzalez@cohen.com.ar\\nGorriti,\\nAna 119\\nGerente\\nRRHH\\n(11) 5613-\\n1990 \\nagorriti@cohen.com.ar\\nHassel,\\nAugusto 164 \\nData & BI\\n(221)\\n15579079\\n5 \\nahassel@cohen.com.ar\\nHerrero,\\nRicardo 123 \\nHead Mesa\\n(11) 3349-\\n2333 \\nrherrero@cohen.com.ar\\nKempny,\\nMarina 192\\nGerente\\nMarketing\\n(11) 3578-\\n4037 \\nmkempny@cohen.com.ar\\nLaiño, Luz 140\\nGerente\\nLegales\\n(11) 2022-\\n1166 \\nllaino@cohen.com.ar\\nLendoiro\\nMariana 190\\nGerente\\nContabilidad\\n(11) 6475-\\n6463 \\nmlendoiro@cohen.com.ar\\nLEZAETA,\\nMARIA\\nVICTORIA \\nRRHH vlezaeta@cohen.com.ar\\nLITVINCH\\nUK,\\nCAMILA\\nCanales de\\nDistribucion clitvinchuk@cohen.com.ar\\nLO\\nPRESTI,\\nVALENTIN\\nA\\nCanales de\\nDistribucion vlopresti@cohen.com.ar\\n\\nLopez\\nOriozabala\\nEmiliano\\nComercial\\nCorporativo\\n(11) 3608-\\n4380 \\nelopez@cohen.com.ar\\nMaidana,\\nHernán 125 \\nMesa\\n(11) 6398\\n2414 \\nhmaidana@cohen.com.ar\\nMajlis,\\nFranco \\nGrowth\\n(11) 3034-\\n7709 \\nfmajlis@cohen.com.ar\\nMartinez\\nLopez,\\nDalila \\nCompliance\\n(11) 3446\\n60-4063 \\ndlopez@cohen.com.ar\\nMartinez,\\nNicolas 169\\nGerente\\nSistemas\\n(11) 5012-\\n2377 \\nnmartinez@cohen.com.ar\\nMazza,\\nJuan\\nPedro \\nEstrategia\\n(11) 4960-\\n0945 \\njmazza@cohen.com.ar\\nMAZZARA\\n, MIA \\nIndividuos mmazzara@cohen.com.ar\\nMedina,\\nFacundo 160 \\nMesa\\n(11) 4058-\\n9946 \\nfmedina@cohen.com.ar\\nMELIAN,\\nCELESTE \\nRRHH cmelian@cohen.com.ar\\nMolina,\\nAlexandra 126 \\nMesa\\n(11) 6124-\\n9044 \\namolina@cohen.com.ar\\nMONTES,\\nAILEN\\nDESIREE \\nMarketing amontes@cohen.com.ar\\nMoreau,\\nGermán 160 \\nTesorería\\n(11) 5644-\\n5529 \\ngmoreau@cohen.com.ar\\nNieto,\\nAlejandro 126\\nComercial\\nIndividuos\\n(11) 6483-\\n8080 \\nanieto@cohen.com.ar\\nOrtiz,\\nFederico\\nJavier 144 \\nBack Office\\n(11) 6237-\\n9165 \\nfortiz@cohen.com.ar\\nParrondo,\\nNicolás 101 \\nDirector\\n(11) 4071-\\n8429 \\nnparrondo@cohen.com.ar\\nPAVÓN,\\nSEBASTIA\\nN \\nTesorería spavon@cohen.com.ar\\nPicardo,\\nCristian \\nMesa\\n(11) 5020-\\n2831 \\ncpicardo@cohen.com.ar\\n\\nPOLANSKI\\n,\\nESTEBAN\\nInstitucional\\nes epolanski@cohen.com.ar\\nPolo,\\nMartín 198\\nHead\\nEstrategia\\n(11) 5909-\\n9342 \\nmpolo@cohen.com.ar\\nPosse,\\nFrancisco \\nMesa\\n(11) 3341-\\n7891 \\nfposse@cohen.com.ar\\nPrync,\\nAmir 110\\nGerente\\nOperacione\\ns\\n(11) 5327-\\n5657 \\naprync@cohen.com.ar\\nRavagnani\\n, Carolina \\nRRHH\\n(11) 3156-\\n8976 \\ncravagnani@cohen.com.ar\\nRebagliati,\\nAgustin 114 \\nContabilidad\\n(11) 5760-\\n0009 \\narebagliati@cohen.com.ar\\nRegueiro,\\nAgustin 154\\nJefe\\nCompliance\\n(11) 5849-\\n7360 \\naregueiro@cohen.com.ar\\nRobirosa,\\nVicente\\nNuevos\\nNegocios\\n(11) 3210-\\n2415 \\nvrobirosa@cohen.com.ar\\nROCHA,\\nHEBER \\nBack Office hrocha@cohen.com.ar\\nRodriguez,\\nSoledad 133\\nGte.\\nCompliance\\ny Auditoría\\n(11) 6490-\\n8502 \\nsrodriguez@cohen.com.ar\\nRolón,\\nJuan\\nCarlos 145 \\nCadeteria\\n(11) 4994-\\n2395 \\njrolon@cohen.com.ar\\nRubino,\\nSandra 170\\nSecretaria\\nJulián/\\nJorge\\n(11) 4163-\\n4379 \\nsrubino@cohen.com.ar\\nSaavedra,\\nFabian 161 \\nTesoreria fsaavedra@cohen.com.ar\\nSalcedo,\\nMatias 158\\nFinanciamie\\nnto\\n(11) 5489-\\n4855 \\nmsalcedo@cohen.com.ar\\nSAMANIE\\nGO,\\nAGUSTIN\\nA \\nCompliance asamaniego@cohen.com.ar\\nSansotta,\\nYesica 151 \\nGrowth\\n(11) 3601-\\n7279 \\nysansotta@cohen.com.ar\\n\\nSANTA\\nCRUZ,\\nELIAS \\nesantacruz@cohen.com.ar\\nSCHULDEI\\nS,\\nCRISTINA\\nLider Back\\nOffice cschuldeis@cohen.com.ar\\nShaw,\\nFrancisco\\nAsset\\nManagemen\\nt\\n(11) 6667-\\n0044 \\nfshaw@cohen.com.ar\\nSILVA,\\nROBERTO\\nAsset\\nManagemen\\nt\\n(11)\\n64815908 \\nrsilva@cohen.com.ar\\nSUAREZ\\nPENOTH,\\nFELIPE\\nSANTIAG\\nO \\nfpenoth@cohen.com.ar\\nTacone,\\nMauro 178\\nFinanciamie\\nnto\\n(11) 6838-\\n3362 \\nmtaccone@cohen.com.ar\\nTinelli,\\nGaston 184\\nLíder\\nComercial\\nIndividuos\\n(11) 6551-\\n2510 \\ngtinelli@cohen.com.ar\\nToloza,\\nAnabella \\nContabilidad\\n(11) 2671-\\n3072 \\natoloza@cohen.com.ar\\nVazquez,\\nJuan José 134 \\nEstrategia\\n(11) 4045-\\n2299 \\njvazquez@cohen.com.ar\\nVerzola,\\nMatias \\nMesa\\n(11) 3027-\\n4212 \\nmverzola@cohen.com.ar\\nVILLA,\\nFEDERICO \\nComerciales fvilla@cohen.com.ar\\nWILSON,\\nEZEQUIEL \\newilson@cohen.com.ar\\nZuchovick\\ni, Andrés 202\\nComercial\\nCorporativo\\n(11) 3348-\\n1098 \\narzuchovicki@cohen.com.ar\\n\\n\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        -288
+      ],
+      "id": "6e2a5f1e-8458-46dc-9bb6-a9eb95bd9ba7",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -336,
+        -64
+      ],
+      "id": "c0f834aa-67dc-4cd0-aae2-e5818b03a4bd",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "cSqWu2R70mBwFbyq",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -208,
+        -64
+      ],
+      "id": "187229ec-4f4b-4c1b-9f94-34d366c4c1d9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -944,
+        32
+      ],
+      "id": "5e9b41d7-7bb3-4675-a02f-0c651cd84ba0",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "cSqWu2R70mBwFbyq",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.Mensaje }}",
+                    "rightValue": "no importante",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7d2bea6f-1cb8-48af-aa09-68f28ed00306"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "No Importante"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c83f039e-f6ce-454c-a973-6bb017319430",
+                    "leftValue": "={{ $json.output.Mensaje }}",
+                    "rightValue": "importante",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Importante"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -624,
+        -240
+      ],
+      "id": "9ddf7762-0602-46b4-b92c-9dc5e3ac2796",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"Mensaje\": \"Importante\",\n\t\"Mensaje\": \"No importante\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -784,
+        32
+      ],
+      "id": "c0392246-8dc2-4ace-88ae-0919dbd29d3a",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Dado este mensaje: {{ $json.message.text }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Sos un clasificador de mensajes para Heber Daniel Ismael Rocha.  Regla única:  Si el mensaje pide explícitamente hablar con Heber y rechaza la intervención del bot (frases tipo “quiero hablar con vos”, “pasame con Heber”, “que no responda la IA”, “prefiero que me contestes vos”, etc.), etiquetalo como importante.  Cualquier otro mensaje (incluidos saludos, consultas normales, elogios, insultos suaves, chistes o spam) etiquetalo como no importante."
+            },
+            {
+              "message": "Tu output solo puede ser \"importante\" o \"no importante\". NADA MAS"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -944,
+        -240
+      ],
+      "id": "4ae274c6-6263-4928-9549-e49634d89021",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "sendTo": "heber_rocha@outlook.com.ar",
+        "subject": "ALGUIEN ME SOLICITA/BOT TELEGRAM",
+        "emailType": "text",
+        "message": "=Alguien te solicita: \nNombre: {{ $json.data.Nombre }}\nApellido: {{ $json.data.Apellido }}\nMotivo: {{ $json.data['Motivo por el cual solicitas a mi creador'] }}\nCelular: {{ $json.data['Tu celular por si no te tiene agendado mi creador:'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -144,
+        128
+      ],
+      "id": "f81e5543-da29-4c9a-96a4-5f286fd18225",
+      "name": "Send a message",
+      "webhookId": "e32822ce-1152-41d8-8e90-6289be44a1f0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "AtSPt1wZHWh22mgM",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -64
+      ],
+      "id": "5f5365ff-f2e7-4791-890b-56d94f5db0af",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "message": "Bueno bueno la concha tuya... Completa este formulario con tu nombre, apellido y para que mierda necesitas a mi creador que te derivo con el:\nme contruyo a mi, una IA entera a tu disposicion, al re pedo porque ni asi puede evitar que le rompan los huevos pobre",
+        "responseType": "customForm",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nombre",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Apellido",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Motivo por el cual solicitas a mi creador",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Tu celular por si no te tiene agendado mi creador:"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -384,
+        128
+      ],
+      "id": "657eeabe-e32b-4b88-b0a9-99c02ba7c250",
+      "name": "Send message and wait for response",
+      "webhookId": "dd01f8e1-8ba2-48ae-9c73-4906bfad9c65",
+      "credentials": {
+        "telegramApi": {
+          "id": "IEhsKt09HYNOaQ2A",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "=Listo la puta madre, ya le avise a mi creador que solicitas su valiosa atencion. Rompe huevos",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        112,
+        128
+      ],
+      "id": "76572afe-522a-42b0-9cf1-2f5355f5fa30",
+      "name": "Send a text message1",
+      "webhookId": "6321fc1b-8ad8-46f3-b088-acf3b4d72fb4",
+      "credentials": {
+        "telegramApi": {
+          "id": "IEhsKt09HYNOaQ2A",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        32,
+        -64
+      ],
+      "id": "85368d2a-69bb-471f-88db-ececefc11ab6",
+      "name": "Wikipedia"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        []
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send message and wait for response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send message and wait for response": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "45e54895-9cc6-4f3b-ba19-c6f95d077e3a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "59226660c4439ddc00dc11c2617d9d03ccdd4c831122ebe42ba86338c7c59c45"
+  },
+  "id": "VzjnvjuQ0gp3vABD",
+  "tags": []
+}
